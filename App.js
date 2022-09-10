@@ -8,19 +8,22 @@
 
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import Header from './src/hearder';
 
 class App extends Component {
+  state = {
+    appName: 'MY FIRST APP',
+  };
   render() {
     return (
       <View style={styles.mainView}>
+        <Header name={this.state.appName} />
         <View style={styles.subView}>
-          <Text style={styles.mainText}>hello world</Text>
-        </View>
-        <View style={styles.subView}>
-          <Text>hello world</Text>
-        </View>
-        <View style={styles.anotherSubView}>
-          <Text style={styles.mainText}>hello world</Text>
+          <Text
+            style={styles.mainText}
+            onPress={() => alert('text touch event')}>
+            hello world
+          </Text>
         </View>
       </View>
     );
@@ -30,31 +33,29 @@ class App extends Component {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     paddingVertical: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
   subView: {
-    flex: 1,
     backgroundColor: 'yellow',
     marginBottom: 10,
-    width: "50%"
   },
   anotherSubView: {
     flex: 2,
     backgroundColor: 'yellow',
     marginBottom: 10,
-    width: "100%",
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   mainText: {
-    fontSize: 40,
-    fontWeight: "bold",
-    color: "red",
-    padding: 20
-  }
+    fontSize: 20,
+    fontWeight: 'normal',
+    color: 'red',
+    padding: 20,
+  },
 });
 
 export default App;
