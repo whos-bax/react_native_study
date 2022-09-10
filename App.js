@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import Header from './src/hearder';
+import Generator from './src/generator';
 
 class App extends Component {
   state = {
@@ -25,6 +26,7 @@ class App extends Component {
             hello world
           </Text>
         </View>
+        <Generator />
       </View>
     );
   }
