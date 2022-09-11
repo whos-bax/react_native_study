@@ -10,10 +10,31 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import Header from './src/hearder';
 import Generator from './src/generator';
+import Numlist from './src/numlist';
 
 class App extends Component {
   state = {
     appName: 'MY FIRST APP',
+    random: [36, 999],
+  };
+
+  onAddRandomNum = () => {
+    const randomNum = Math.floor(Math.random() * 100) + 1;
+    this.setState(prevState => {
+      return {
+        random: [...prevState.random, randomNum],
+      };
+    });
+  };
+
+  onNumDelete = position => {
+    const newArray = this.state.random.filter((num, index) => {
+      return position != index;
+    });
+    this.setState({
+      random: newArray,
+    });
+    alert('delete', position);
   };
   render() {
     return (
@@ -26,7 +47,8 @@ class App extends Component {
             hello world
           </Text>
         </View>
-        <Generator />
+        <Generator add={this.onAddRandomNum} />
+        <Numlist num={this.state.random} delete={this.onNumDelete} />
       </View>
     );
   }
@@ -38,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingVertical: 50,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   subView: {
     backgroundColor: 'yellow',

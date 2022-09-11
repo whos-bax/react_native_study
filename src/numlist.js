@@ -16,21 +16,25 @@ import {
   Button,
 } from 'react-native';
 
-const Generator = (props) => {
-  return (
-    <View style={styles.generator}>
-      <Button title="Add Number" onPress={()=> props.add()}/>
-    </View>
-  );
+const Numlist = props => {
+  return props.num.map((item, idx) => (
+    <TouchableOpacity
+      style={styles.numList}
+      key={idx}
+      onPress={() => props.delete(idx)}>
+      <Text>{item}</Text>
+    </TouchableOpacity>
+  ));
 };
 
 const styles = StyleSheet.create({
-  generator: {
-    backgroundColor: '#123242',
+  numList: {
+    backgroundColor: '#cecece',
     alignItems: 'center',
     padding: 5,
     width: '100%',
+    marginTop: 5,
   },
 });
 
-export default Generator;
+export default Numlist;
