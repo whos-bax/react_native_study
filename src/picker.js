@@ -17,19 +17,20 @@ import {
   ScrollView,
   Button,
   TextInput,
+  ActivityIndicator,
 } from 'react-native';
 
 class PickerComponent extends Component {
   state = {
-    country : "korea",
-    value: 50
-  }
+    country: 'korea',
+    value: 50,
+  };
 
-  sliderValueChange = (value) => {
+  sliderValueChange = value => {
     this.setState({
-      value: value
-    })
-  }
+      value: value,
+    });
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -45,15 +46,14 @@ class PickerComponent extends Component {
         />
         <Text style={styles.input}>{this.state.value}</Text>
 
+        <ActivityIndicator style={{paddingTop: 150}} size="large" color={'green'} animating={true} />
 
-        <Picker style={{height: 50, width: 250}}
-        selectedValue={this.state.country}
-        onValueChange={(val, idx) =>
-          this.setState({country: val})
-        }
-        >
-          <Picker.Item label='Korea' value="korea"/>
-          <Picker.Item label='Canada' value="canada"/>
+        <Picker
+          style={{height: 50, width: 250}}
+          selectedValue={this.state.country}
+          onValueChange={(val, idx) => this.setState({country: val})}>
+          <Picker.Item label="Korea" value="korea" />
+          <Picker.Item label="Canada" value="canada" />
         </Picker>
       </View>
     );
@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
     marginBottom: 200,
     alignItems: 'center',
   },
-  input : {
-    width: "100%",
+  input: {
+    width: '100%',
     marginTop: 20,
-    fontSize: 25
-  }
+    fontSize: 25,
+  },
 });
 
 export default PickerComponent;
