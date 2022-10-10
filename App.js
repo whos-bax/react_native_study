@@ -19,7 +19,7 @@ import Header from './src/hearder';
 import Generator from './src/generator';
 import Numlist from './src/numlist';
 import Input from './src/input';
-import PickerComponent from './src/picker';
+import Picker from './src/picker';
 
 class App extends Component {
   state = {
@@ -74,7 +74,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <PickerComponent />
+        <Picker />
         {/* <Header name={this.state.appName} />
         <View style={styles.subView}>
           <Text
@@ -96,7 +96,7 @@ class App extends Component {
           <Numlist num={this.state.random} delete={this.onNumDelete} />
         </ScrollView> */}
 
-        <TextInput
+        {/* <TextInput
           value={this.state.myTextInput}
           style={styles.input}
           onChangeText={this.onChangeInput}
@@ -112,7 +112,7 @@ class App extends Component {
               {item}
             </Text>
           ))}
-        </ScrollView>
+        </ScrollView> */}
       </View>
     );
   }
