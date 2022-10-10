@@ -14,12 +14,15 @@ import {
   ScrollView,
   Button,
   TextInput,
+  Image,
+  ActivityIndicator,
 } from 'react-native';
 import Header from './src/hearder';
 import Generator from './src/generator';
 import Numlist from './src/numlist';
 import Input from './src/input';
 import Picker from './src/picker';
+import JuiceWrld from './assets/images/juice.png';
 
 class App extends Component {
   state = {
@@ -71,10 +74,40 @@ class App extends Component {
     });
   };
 
+  state = {
+    spinner : true,
+  }
+  onLoadEndAnimate = () => {
+    this.setState({
+      spinner: false
+    })
+    alert("image")
+  }
+
   render() {
     return (
       <View style={styles.mainView}>
-        <Picker />
+        {/* <Image
+        source={JuiceWrld}
+        style={styles.image}
+        resizeMode={"contain"}
+        /> */}
+        <Image
+          source={{
+            uri: 'https://cdn.pixabay.com/photo/2017/12/23/18/58/waters-3035780_1280.jpg',
+          }}
+          style={styles.image}
+          resizeMode={'cover'}
+          onLoadEnd={() => this.onLoadEndAnimate()}
+        />
+
+        <ActivityIndicator
+          style={{paddingTop: 500, position: 'absolute'}}
+          size="large"
+          color={'green'}
+          animating={this.state.spinner}
+        />
+        {/* <Picker /> */}
         {/* <Header name={this.state.appName} />
         <View style={styles.subView}>
           <Text
@@ -152,6 +185,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });
 
