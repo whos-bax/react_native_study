@@ -23,6 +23,7 @@ import Numlist from './src/numlist';
 import Input from './src/input';
 import Picker from './src/picker';
 import JuiceWrld from './assets/images/juice.png';
+import Modal from './src/modal';
 
 class App extends Component {
   state = {
@@ -75,23 +76,26 @@ class App extends Component {
   };
 
   state = {
-    spinner : true,
-  }
+    spinner: true,
+  };
   onLoadEndAnimate = () => {
     this.setState({
-      spinner: false
-    })
-    alert("image")
-  }
+      spinner: false,
+    });
+    alert('image');
+  };
 
   render() {
     return (
       <View style={styles.mainView}>
+        <Modal />
+
+        {/* Image */}
         {/* <Image
         source={JuiceWrld}
         style={styles.image}
         resizeMode={"contain"}
-        /> */}
+        />
         <Image
           source={{
             uri: 'https://cdn.pixabay.com/photo/2017/12/23/18/58/waters-3035780_1280.jpg',
@@ -106,7 +110,9 @@ class App extends Component {
           size="large"
           color={'green'}
           animating={this.state.spinner}
-        />
+        /> */}
+
+        {/* Picker */}
         {/* <Picker /> */}
         {/* <Header name={this.state.appName} />
         <View style={styles.subView}>
